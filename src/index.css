@@ -9,3 +9,10 @@ html, body, #root {
     margin: 0;
 }
 
+.main {
+    display: -webkit-box;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    border: 3px solid pink;
+}

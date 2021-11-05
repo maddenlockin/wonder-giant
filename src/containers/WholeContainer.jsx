@@ -4,7 +4,7 @@ import CallList from '../components/calls/CallList';
 import Controls from '../components/calls/Controls';
 import Header from '../components/Header';
 import { callApi } from '../services/Fetch';
-//import styles from '../index.css'
+import styles from '../index.css'
 
 export default class WholeContainer extends Component {
     state= {
@@ -38,19 +38,19 @@ export default class WholeContainer extends Component {
         console.log(this.state);
         const { loading, call } = this.state;
         return (
-            <>
+            <div className={styles.container}>
                 <Header />
                 <section className='main'>
                     <CallList />
                     <div>
                         <Controls onChange={this.handleChange} onSubmit={this.handleSubmit} />
                         { loading 
-                            ? <div>loading...</div>
+                            ? <div className={styles.call}>loading...</div>
                             : <Call call={call} />
                         }
                     </div>
                 </section>
-            </>
+            </div>
         )
     }
 }

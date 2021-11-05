@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactJson from 'react-json-view';
+import styles from '../../index.css';
 
 export default function Call({ call }) {
-    return <div><ReactJson src={call} /></div>
+    return <div className={styles.call}><ReactJson src={call} /></div>
 }
 Call.propTypes = {
-    call: PropTypes.any.isRequired
+    call: PropTypes.node.isRequired
 }

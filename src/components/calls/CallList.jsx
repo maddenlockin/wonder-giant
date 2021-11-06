@@ -6,5 +6,5 @@ export default function CallList() {
         <div className={styles.callList}>
             <h3>Call List</h3>
         </div>
-    )
+    );
 }

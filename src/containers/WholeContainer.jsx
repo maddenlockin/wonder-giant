@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Call from '../components/calls/Call';
-import CallList from '../components/calls/CallList';
+import Display from '../components/calls/Display';
+import CallList from '../components/calls/Display';
 import Controls from '../components/calls/Controls';
 import Header from '../components/Header';
 import { callApi } from '../services/Fetch';
@@ -13,7 +13,7 @@ export default class WholeContainer extends Component {
         method: '',
         body: '',
         callList: [],
-        call: { 'Beep Beep': 'It\'s Jeep'}
+        display: { 'Beep Beep': 'It\'s Jeep'}
 
     }
 
@@ -25,28 +25,28 @@ export default class WholeContainer extends Component {
     handleSubmit = async(e) => {
         e.preventDefault();
         this.setState({ loading:true })
-        const call = await callApi(
+        const display = await callApi(
             this.state.url,
             this.state.body,
             this.state.method
             );
-        console.log(call);
-        this.setState({ loading:false, call });
+        console.log(display);
+        this.setState({ loading:false, display });
     }
 
     render() {
         console.log(this.state);
-        const { loading, call } = this.state;
+        const { loading, display } = this.state;
         return (
             <div className={styles.container}>
                 <Header />
-                <section className='main'>
+                <section className={styles.main}>
                     <CallList />
                     <div>
                         <Controls onChange={this.handleChange} onSubmit={this.handleSubmit} />
                         { loading 
-                            ? <div className={styles.call}>loading...</div>
-                            : <Call call={call} />
+                            ? <div className={styles.display}>loading...</div>
+                            : <Display display={display} />
                         }
                     </div>
                 </section>
